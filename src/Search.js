@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import * as BooksAPI from './BooksAPI'
 
+import FallbackCover from "./icons/book.png";
+
 class Search extends Component {
 
     state = {
@@ -9,7 +11,7 @@ class Search extends Component {
     }
 
     componentDidMount() {
-        BooksAPI.search('poe').then(books => {
+        BooksAPI.search('biography').then(books => {
             this.setState( {books} )
         });
     }
@@ -39,7 +41,8 @@ class Search extends Component {
                                         style={{
                                             width: 128,
                                             height: 193,
-                                            backgroundImage: `url(${ book.imageLinks ? book.imageLinks.thumbnail : "http://books.google.com/books/content?id=PGR2AwAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73-GnPVEyb7MOCxDzOYF1PTQRuf6nCss9LMNOSWBpxBrz8Pm2_mFtWMMg_Y1dx92HT7cUoQBeSWjs3oEztBVhUeDFQX6-tWlWz1-feexS0mlJPjotcwFqAg6hBYDXuK_bkyHD-y&source=gbs_api"})`
+                                            backgroundSize: 'cover',
+                                            backgroundImage: `url(${ book.imageLinks ? book.imageLinks.thumbnail : FallbackCover })`
                                         }}
                                         />
                                     <div className="book-shelf-changer">
