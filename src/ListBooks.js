@@ -5,7 +5,8 @@ import * as BooksAPI from './BooksAPI';
 
 class ListBooks extends Component {
     state = {
-        allBooks: []
+        allBooks: [],
+        test: 'sample state'
     };
 
     componentDidMount() {
@@ -44,17 +45,15 @@ class ListBooks extends Component {
                             <h2 className="bookshelf-title">Want to Read</h2>
                             <div className="bookshelf-books">
                                 <ol className="books-grid">
-                                  {this.state.allBooks
-                                  .filter(
-                                      book =>
-                                          book.shelf ===
-                                          'wantToRead'
-                                  )
-                                  .map(book => (
-                                      <li key={book.id}>
-                                          <BookTemplate book={book} />
-                                      </li>
-                                  ))}
+                                    {this.state.allBooks
+                                        .filter(
+                                            book => book.shelf === 'wantToRead'
+                                        )
+                                        .map(book => (
+                                            <li key={book.id}>
+                                                <BookTemplate book={book} />
+                                            </li>
+                                        ))}
                                 </ol>
                             </div>
                         </div>
@@ -62,17 +61,13 @@ class ListBooks extends Component {
                             <h2 className="bookshelf-title">Read</h2>
                             <div className="bookshelf-books">
                                 <ol className="books-grid">
-                                  {this.state.allBooks
-                                  .filter(
-                                      book =>
-                                          book.shelf ===
-                                          'read'
-                                  )
-                                  .map(book => (
-                                      <li key={book.id}>
-                                          <BookTemplate book={book} />
-                                      </li>
-                                  ))}
+                                    {this.state.allBooks
+                                        .filter(book => book.shelf === 'read')
+                                        .map(book => (
+                                            <li key={book.id}>
+                                                <BookTemplate book={book} />
+                                            </li>
+                                        ))}
                                 </ol>
                             </div>
                         </div>

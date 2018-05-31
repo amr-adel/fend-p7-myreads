@@ -37,7 +37,7 @@ class Search extends Component {
                         {this.state.books &&
                             this.state.books.map(book => (
                                 <li key={book.id}>
-                                {book.shelf}
+                                    {book.shelf}
                                     <div className="book">
                                         <div className="book-top">
                                             <div
@@ -55,9 +55,14 @@ class Search extends Component {
                                                 }}
                                             />
                                             <div className="book-shelf-changer">
-                                                <select onChange={e => (
-                                                    BooksAPI.update(book, e.target.value)
-                                                )}>
+                                                <select
+                                                    onChange={e =>
+                                                        BooksAPI.update(
+                                                            book,
+                                                            e.target.value
+                                                        )
+                                                    }
+                                                >
                                                     <option
                                                         value="none"
                                                         disabled
