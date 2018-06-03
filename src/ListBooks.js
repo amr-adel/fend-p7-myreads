@@ -5,8 +5,7 @@ import * as BooksAPI from './BooksAPI';
 
 class ListBooks extends Component {
     state = {
-        allBooks: [],
-        test: 'sample state'
+        allBooks: []
     };
 
     componentDidMount() {

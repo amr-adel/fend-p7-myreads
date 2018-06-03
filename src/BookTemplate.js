@@ -4,6 +4,7 @@ import * as BooksAPI from './BooksAPI';
 import FallbackCover from './icons/book.png';
 
 class BookTemplate extends Component {
+
     changeShelf(book, shelf) {
         BooksAPI.update(book, shelf);
     }
@@ -11,6 +12,7 @@ class BookTemplate extends Component {
     render() {
         return (
             <div className="book">
+            {/* {console.log(this.props.book)} */}
                 <div className="book-top">
                     <div
                         className="book-cover"
@@ -35,7 +37,7 @@ class BookTemplate extends Component {
                                 )
                             }
                         >
-                            <option value="none" disabled>
+                            <option value="header" disabled>
                                 Move to...
                             </option>
                             <option value="currentlyReading">
