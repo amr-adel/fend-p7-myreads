@@ -5,8 +5,13 @@ import * as BooksAPI from './BooksAPI';
 
 class Search extends Component {
     state = {
-        books: []
+        books: [],
+        onShelf: []
     };
+
+    componentDidMount() {
+        BooksAPI.getAll().then(onShelf => this.setState({ onShelf }));
+    }
 
     searchBooks(keyword) {
         BooksAPI.search(keyword).then(books => {
@@ -36,7 +41,7 @@ class Search extends Component {
                         {Array.isArray(this.state.books) &&
                             this.state.books.map(book => (
                                 <li key={book.id}>
-                                    <BookTemplate book={book} />
+                                    <BookTemplate book={book} onShelf={this.state.onShelf} />
                                 </li>
                             ))}
                     </ol>
