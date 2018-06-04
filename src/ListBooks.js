@@ -12,6 +12,14 @@ class ListBooks extends Component {
         BooksAPI.getAll().then(allBooks => this.setState({ allBooks }));
     }
 
+    testShelf = (movedBook, shelf) => {
+        const movedBookIndex = this.state.allBooks.indexOf(movedBook);
+        const tempAllBooks = this.state.allBooks;
+        tempAllBooks[movedBookIndex].shelf = shelf;
+        this.setState({ allBooks: tempAllBooks });
+        BooksAPI.update(movedBook, shelf);
+    };
+
     render() {
         return (
             <div className="list-books">
@@ -34,7 +42,10 @@ class ListBooks extends Component {
                                         )
                                         .map(book => (
                                             <li key={book.id}>
-                                                <BookTemplate book={book} />
+                                                <BookTemplate
+                                                    book={book}
+                                                    test={this.testShelf}
+                                                />
                                             </li>
                                         ))}
                                 </ol>
@@ -50,7 +61,10 @@ class ListBooks extends Component {
                                         )
                                         .map(book => (
                                             <li key={book.id}>
-                                                <BookTemplate book={book} />
+                                                <BookTemplate
+                                                    book={book}
+                                                    test={this.testShelf}
+                                                />
                                             </li>
                                         ))}
                                 </ol>
@@ -64,7 +78,10 @@ class ListBooks extends Component {
                                         .filter(book => book.shelf === 'read')
                                         .map(book => (
                                             <li key={book.id}>
-                                                <BookTemplate book={book} />
+                                                <BookTemplate
+                                                    book={book}
+                                                    test={this.testShelf}
+                                                />
                                             </li>
                                         ))}
                                 </ol>

@@ -19,6 +19,8 @@ class Search extends Component {
         });
     }
 
+    testShelf = (movedBook, shelf) => BooksAPI.update(movedBook, shelf);
+
     render() {
         return (
             <div className="search-books">
@@ -41,7 +43,11 @@ class Search extends Component {
                         {Array.isArray(this.state.books) &&
                             this.state.books.map(book => (
                                 <li key={book.id}>
-                                    <BookTemplate book={book} onShelf={this.state.onShelf} />
+                                    <BookTemplate
+                                        book={book}
+                                        onShelf={this.state.onShelf}
+                                        test={this.testShelf}
+                                    />
                                 </li>
                             ))}
                     </ol>

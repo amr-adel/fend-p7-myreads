@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-import * as BooksAPI from './BooksAPI';
+// import * as BooksAPI from './BooksAPI';
 
 import FallbackCover from './icons/book.png';
 
 class BookTemplate extends Component {
-    changeShelf(book, shelf) {
-        BooksAPI.update(book, shelf);
-    }
-
     checkShelf(id, onShelf) {
         let bookOnShelf = onShelf.filter(book => book.id === id);
         return bookOnShelf.length > 0 ? bookOnShelf[0].shelf : 'none';
@@ -42,10 +38,7 @@ class BookTemplate extends Component {
                                       )
                             }
                             onChange={e =>
-                                this.changeShelf(
-                                    this.props.book,
-                                    e.target.value
-                                )
+                                this.props.test(this.props.book, e.target.value)
                             }
                         >
                             <option value="header" disabled>
