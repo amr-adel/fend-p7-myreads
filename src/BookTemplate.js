@@ -38,7 +38,7 @@ class BookTemplate extends Component {
                                       )
                             }
                             onChange={e =>
-                                this.props.test(this.props.book, e.target.value)
+                                this.props.moveBook(this.props.book, e.target.value)
                             }
                         >
                             <option value="header" disabled>

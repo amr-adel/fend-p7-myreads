@@ -9,6 +9,11 @@ class Search extends Component {
         onShelf: []
     };
 
+    constructor(props) {
+        super(props);
+        this.moveBook = this.moveBook.bind(this);
+    }
+
     componentDidMount() {
         BooksAPI.getAll().then(onShelf => this.setState({ onShelf }));
     }
@@ -19,7 +24,7 @@ class Search extends Component {
         });
     }
 
-    testShelf = (movedBook, shelf) => BooksAPI.update(movedBook, shelf);
+    moveBook = (movedBook, shelf) => BooksAPI.update(movedBook, shelf);
 
     render() {
         return (
@@ -46,7 +51,7 @@ class Search extends Component {
                                     <BookTemplate
                                         book={book}
                                         onShelf={this.state.onShelf}
-                                        test={this.testShelf}
+                                        moveBook={this.moveBook}
                                     />
                                 </li>
                             ))}

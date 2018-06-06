@@ -8,11 +8,16 @@ class ListBooks extends Component {
         allBooks: []
     };
 
+    constructor(props) {
+        super(props);
+        this.moveBook = this.moveBook.bind(this);
+    }
+
     componentDidMount() {
         BooksAPI.getAll().then(allBooks => this.setState({ allBooks }));
     }
 
-    testShelf = (movedBook, shelf) => {
+    moveBook = (movedBook, shelf) => {
         const movedBookIndex = this.state.allBooks.indexOf(movedBook);
         const tempAllBooks = this.state.allBooks;
         tempAllBooks[movedBookIndex].shelf = shelf;
@@ -44,7 +49,7 @@ class ListBooks extends Component {
                                             <li key={book.id}>
                                                 <BookTemplate
                                                     book={book}
-                                                    test={this.testShelf}
+                                                    moveBook={this.moveBook}
                                                 />
                                             </li>
                                         ))}
@@ -63,7 +68,7 @@ class ListBooks extends Component {
                                             <li key={book.id}>
                                                 <BookTemplate
                                                     book={book}
-                                                    test={this.testShelf}
+                                                    moveBook={this.moveBook}
                                                 />
                                             </li>
                                         ))}
@@ -80,7 +85,7 @@ class ListBooks extends Component {
                                             <li key={book.id}>
                                                 <BookTemplate
                                                     book={book}
-                                                    test={this.testShelf}
+                                                    moveBook={this.moveBook}
                                                 />
                                             </li>
                                         ))}
