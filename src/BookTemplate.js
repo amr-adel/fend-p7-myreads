@@ -11,53 +11,45 @@ class BookTemplate extends Component {
 
     render() {
         return (
-            <div className="book">
-                {/* {console.log(this.props.book)} */}
-                <div className="book-top">
-                    <div
-                        className="book-cover"
-                        style={{
-                            width: 128,
-                            height: 193,
-                            backgroundSize: 'cover',
-                            backgroundImage: `url(${
-                                this.props.book.imageLinks
-                                    ? this.props.book.imageLinks.thumbnail
-                                    : FallbackCover
-                            })`
-                        }}
-                    />
-                    <div className="book-shelf-changer">
-                        <select
-                            defaultValue={
-                                this.props.book.shelf
-                                    ? this.props.book.shelf
-                                    : this.checkShelf(
-                                          this.props.book.id,
-                                          this.props.onShelf
-                                      )
-                            }
-                            onChange={e =>
-                                this.props.moveBook(this.props.book, e.target.value)
-                            }
-                        >
-                            <option value="header" disabled>
-                                Move to...
-                            </option>
-                            <option value="currentlyReading">
-                                Currently Reading
-                            </option>
-                            <option value="wantToRead">Want to Read</option>
-                            <option value="read">Read</option>
-                            <option value="none">None</option>
-                        </select>
+            <div className="col s12 m6 l3">
+                <div className="card hoverable grey lighten-4 medium">
+                    <div className="card-image">
+                        <img src={this.props.book.imageLinks ? this.props.book.imageLinks.thumbnail : FallbackCover} alt={this.props.book.title} />
+                        <span className="card-title flow-text col s12">{this.props.book.title}</span>
                     </div>
-                </div>
-                <div className="book-title">{this.props.book.title}</div>
-                <div className="book-authors">
-                    {this.props.book.authors
-                        ? this.props.book.authors.join(`, `)
-                        : 'Unknown'}
+                    <div className="card-stacked">
+                        <div className="card-content">
+                            <div className="blue-grey-text">
+                                {this.props.book.authors
+                                    ? this.props.book.authors.join(`, `)
+                                    : 'Unknown'}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="card-action">
+                        <div className="input-field col s12">
+                            <select
+                                className="browser-default"
+                                defaultValue={
+                                    this.props.book.shelf
+                                        ? this.props.book.shelf
+                                        : this.checkShelf(
+                                            this.props.book.id,
+                                            this.props.onShelf
+                                        )
+                                }
+                                onChange={e =>
+                                    this.props.moveBook(this.props.book, e.target.value)
+                                }
+                            >
+                                <option value="header" disabled>Move to...</option>
+                                <option value="currentlyReading">Currently Reading</option>
+                                <option value="wantToRead">Want to Read</option>
+                                <option value="read">Read</option>
+                                <option value="none">None</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
         );

@@ -28,75 +28,75 @@ class ListBooks extends Component {
     render() {
         return (
             <div className="list-books">
-                <div className="list-books-title">
-                    <h1>MyReads</h1>
+                <div className="navbar-fixed">
+                    <nav>
+                        <div className="nav-wrapper blue-grey">
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col s12">
+                                        <a href="#" className="brand-logo"><span className="amber-text">i</span>Bookshelf</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
                 </div>
-                <div className="list-books-content">
-                    <div>
-                        <div className="bookshelf">
-                            <h2 className="bookshelf-title">
-                                Currently Reading
-                            </h2>
-                            <div className="bookshelf-books">
-                                <ol className="books-grid">
-                                    {this.state.allBooks
-                                        .filter(
-                                            book =>
-                                                book.shelf ===
-                                                'currentlyReading'
-                                        )
-                                        .map(book => (
-                                            <li key={book.id}>
-                                                <BookTemplate
-                                                    book={book}
-                                                    moveBook={this.moveBook}
-                                                />
-                                            </li>
-                                        ))}
-                                </ol>
-                            </div>
+                <div className="container">
+                    <div className="bookshelf">
+                        <div className="row">
+                            <h4 className="center blue-grey-text">Currently Reading</h4>
                         </div>
-                        <div className="bookshelf">
-                            <h2 className="bookshelf-title">Want to Read</h2>
-                            <div className="bookshelf-books">
-                                <ol className="books-grid">
-                                    {this.state.allBooks
-                                        .filter(
-                                            book => book.shelf === 'wantToRead'
-                                        )
-                                        .map(book => (
-                                            <li key={book.id}>
-                                                <BookTemplate
-                                                    book={book}
-                                                    moveBook={this.moveBook}
-                                                />
-                                            </li>
-                                        ))}
-                                </ol>
-                            </div>
+                        <ol className="row">
+                            {this.state.allBooks
+                                .filter(book => book.shelf === 'currentlyReading')
+                                .map(book => (
+                                    <li key={book.id}>
+                                        <BookTemplate
+                                            book={book}
+                                            moveBook={this.moveBook}
+                                        />
+                                    </li>
+                                ))}
+                        </ol>
+                    </div>
+                    <div className="divider" />
+                    <div className="bookshelf">
+                        <div className="row">
+                            <h4 className="center blue-grey-text">Want to Read</h4>
                         </div>
-                        <div className="bookshelf">
-                            <h2 className="bookshelf-title">Read</h2>
-                            <div className="bookshelf-books">
-                                <ol className="books-grid">
-                                    {this.state.allBooks
-                                        .filter(book => book.shelf === 'read')
-                                        .map(book => (
-                                            <li key={book.id}>
-                                                <BookTemplate
-                                                    book={book}
-                                                    moveBook={this.moveBook}
-                                                />
-                                            </li>
-                                        ))}
-                                </ol>
-                            </div>
+                        <ol className="row">
+                            {this.state.allBooks
+                                .filter(book => book.shelf === 'wantToRead')
+                                .map(book => (
+                                    <li key={book.id}>
+                                        <BookTemplate
+                                            book={book}
+                                            moveBook={this.moveBook}
+                                        />
+                                    </li>
+                                ))}
+                        </ol>
+                    </div>
+                    <div className="divider" />
+                    <div className="bookshelf">
+                        <div className="row">
+                            <h4 className="center blue-grey-text">Read</h4>
                         </div>
+                        <ol className="row">
+                            {this.state.allBooks
+                                .filter(book => book.shelf === 'read')
+                                .map(book => (
+                                    <li key={book.id}>
+                                        <BookTemplate
+                                            book={book}
+                                            moveBook={this.moveBook}
+                                        />
+                                    </li>
+                                ))}
+                        </ol>
                     </div>
                 </div>
-                <div className="open-search">
-                    <Link to="/search">Add a book</Link>
-                </div>
+                <Link to="/search" className="btn-floating btn-large waves-effect waves-light red accent-2 float-btn"><i className="material-icons">add</i></Link>
             </div>
         );
     }
