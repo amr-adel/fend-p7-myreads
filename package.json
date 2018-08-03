@@ -1,4 +1,7 @@
 {
+  "name": "iBookshelf",
+  "version": "0.1.2",
+  "private": true,
   "homepage": "https://amr-adel.github.io/fend-p7-myreads/",
   "dependencies": {
     "prop-types": "^15.6.1",
