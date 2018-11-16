@@ -11,7 +11,8 @@
   },
   "devDependencies": {
     "gh-pages": "^1.2.0",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "merge": ">=1.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
